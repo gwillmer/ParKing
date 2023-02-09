@@ -15,3 +15,5 @@ In a file titled "Sprint1.md", add the following details:
 9. As a user, I want to see a picture of the parking spot so I know what the spot looks like.
 10. As a user, I want to be able to assign a rating to a seller's parking spot so that other renters are more informed.
 11. As a seller, I want to be able to sell my parking spot and assign a price to it.
+
+At the beginning of sprint 1 our team planned to address the login in screen with a username and password. The frontend team assembled a login screen, while the backend team assembled the username and password functionality. This is the only issue we planned to address and succeded in doing so. The rest of the list wasn't tackled because we are just starting to get the ball rolling with the basics and are planning to implement more functinality as the sprints go.
