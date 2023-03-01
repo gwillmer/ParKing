@@ -16,7 +16,7 @@ const routes: Routes = [
     component: EventsComponent
   },
   {
-    path: 'special',
+    path: 'special-events',
     component: SpecialEventsComponent
   },
   {

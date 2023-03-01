@@ -1,15 +1,65 @@
-<form (submit)="loginUser($event)">
-    <strong> Login: </strong>
-         
-    <head>
-        <style>
-          body {
-            background: #D3C1D2;
-            color: #121212;
-          }
-        </style>
-    </head>
-    <input type="text" placeholder="username" id="username">
-    <input type="password" placeholder="password" id="password">
-    <input type="submit" value="Submit">
-</form>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      form {
+        padding: 2rem; 
+        border-radius: 35px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 25px;
+      }
+      input[type="submit"] {
+        background-color: #f2c2d4;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        cursor: pointer;
+        
+      }
+    </style>
+  </head>
+  <body>
+
+
+      <form (submit)="loginUser($event)">
+      <h1>Login</h1>
+      
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <input type="submit" value="Submit">
+      </form>
+
+
+    <style>
+    body {
+			background: white;
+      border-radius: 35px;
+		}
+  </style>
+  </body>
+
+</html>

@@ -1,1 +1,112 @@
-<p>buy works!</p>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Bar and Google Maps</title>
+	<style>
+		.search {
+            display: flex;
+			align-items: center;
+			justify-content: center;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+		}
+
+		.search input[type="text"] {
+			flex: 1;
+			height: 30px;
+			padding: 15px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+		}
+
+		.search button {
+            background-color: #f2c2d4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+		}
+
+		.search button:hover, .tab:hover {
+			background-color: #f2c2d4;
+			color: #ccc;
+		}
+
+		.map-container {
+			margin: 20px;
+			border: 20px solid #ffffff;
+			height: calc(100vh - 290px);
+			border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+		}
+
+		.map {
+			height: 100%;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="search">
+		<input type="text" placeholder=" Search...">
+		<button>
+            Search
+        </button>
+        <style>
+            body {
+                    background: white;
+              border-radius: 25px;
+                }
+          </style>
+	</div>
+
+	<div class="map-container">
+		<div id="map" class="map"></div>
+	</div>
+
+	<script src="https://www.google.com/maps/search/?api=1"></script>
+	<script>
+		function initMap() {
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 10,
+				center: {lat: 40.730610, lng: -73.935242},
+				styles: [{
+					featureType: 'poi',
+					stylers: [{ visibility: 'off' }]
+				}]
+			});
+		}
+        
+
+		google.maps.event.addDomListener(window, 'load', initMap);
+	</script>
+
+
+
+	<style>
+		.map-container {
+			margin: 20px;
+			border: 20px solid #ffffff;
+			height: calc(100vh - 310px);
+			border-radius: 25px;
+		}
+
+		.map {
+			height: 100%;
+			border-radius: 10px;
+		}
+
+		.search {
+			margin-top: 10px;
+		}
+	</style>
+</body>
+</html>
