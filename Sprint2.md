@@ -36,6 +36,8 @@ Currently work in progress/not working:
 3. Remove events and special-events routing from original tutorial and rename to buy and sell
 
 Bugs encountered and Status:
+1. Google Maps API not displaying (WIP)
+2. Login doesn't route to main page after successful login (WIP)
 
 # Back End
 Rodrigo Avila Merchan & George Willmer
