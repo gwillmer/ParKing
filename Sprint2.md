@@ -1,5 +1,6 @@
 # Front End
 Sean Ferguson & Christopher Krause
+
 Youtube Link: https://youtu.be/i0xyRB4e23c
 
 Updated UI Formatting with a more modern bubble format:
