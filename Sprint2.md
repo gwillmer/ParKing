@@ -53,8 +53,8 @@ Video file uploaded to canvas
 4. Implemented parking spot address message
 
 ### Parking Spot Unit Testing
- - Initialization Test
-  - Check if parking spot is initialized
+- Initialization Test
+  -  Check if parking spot is initialized
 - Availability Test
   - Check if the parking spot is available or not and displays result
 - Address Test
