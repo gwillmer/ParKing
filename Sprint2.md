@@ -54,7 +54,7 @@ Video file uploaded to canvas
 
 ### Parking Spot Unit Testing
 - Initialization Test
-  -  Check if parking spot is initialized
+  -  Check if parking spot is initialized and populates with randomly genreated data from csv file 
 - Availability Test
   - Check if the parking spot is available or not and displays result
 - Address Test
