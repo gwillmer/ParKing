@@ -1,0 +1,115 @@
+package main
+
+import (
+	"encoding/csv"
+	"fmt"
+	"log"
+	"strconv"
+	"os"
+)
+
+type User struct {
+	ID           uint
+	Username     string
+	PasswordHash string
+	Email        string
+	FirstName    string
+	LastName     string
+}
+
+type ParkingSpot struct {
+	User
+	zipcode       string
+	address       string
+	city          string
+	state         string
+	dollars       string
+	cents         string
+	availibility  string
+	timeAvailable string
+}
+
+func main() {
+	records, error := readData("data.csv")
+
+	if error != nil {
+		log.Fatal(error)
+	}
+
+	for _, record := range records {
+		spot := ParkingSpot{
+			User: User{
+				FirstName: record[0],
+				LastName:  record[1],
+				Email:     record[2],
+			},
+			zipcode:       record[3],
+			address:       record[4],
+			city:          record[5],
+			state:         record[6],
+			dollars:       record[7],
+			cents:         record[8],
+			availibility:  record[9],
+			timeAvailable: record[10],
+		}
+		testSpot(spot)
+	}
+}
+
+func testSpot(spot ParkingSpot) {
+	printAddress(spot)
+	fmt.Println()
+	printAvailability(spot)
+	fmt.Println()
+}
+
+func readData(fileName string) ([][]string, error) {
+
+	f, err := os.Open(fileName)
+
+	if err != nil {
+		return [][]string{}, err
+	}
+
+	defer f.Close()
+
+	r := csv.NewReader(f)
+
+	// skip first line
+	if _, err := r.Read(); err != nil {
+		return [][]string{}, err
+	}
+
+	records, err := r.ReadAll()
+
+	if err != nil {
+		return [][]string{}, err
+	}
+
+	return records, nil
+}
+
+func printAddress(spot ParkingSpot) {
+	fmt.Println("Parking Address:")
+	fmt.Println(spot.address)
+	fmt.Println(spot.city, ", ", spot.state, " ", spot.zipcode)
+}
+
+func printAvailability(spot ParkingSpot) {
+	intVar, err := strconv.Atoi(spot.availibility)
+
+	if err != nil {
+		fmt.Println("Error during conversion.")
+		return
+	}
+
+	fmt.Println("Availability:")
+
+	if intVar == 0 {
+		fmt.Println("This parking spot is not available.")
+	} else if intVar == 1{
+		fmt.Println("This parking spot is available.")
+	} else {
+		fmt.Println("Error with this parking spot's availability.")
+	}
+}
