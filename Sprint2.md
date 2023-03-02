@@ -47,15 +47,15 @@ Youtube Link: https://youtu.be/i0xyRB4e23c
 Video file uploaded to canvas
 
 ### Created Parking Spot Structure:
-1.Implemented parking spot structure in go
-2.Populated the structure with variables needed for the website
-3.Implemented parking spot availability message
-4.Implemented parking spot address message
+1. Implemented parking spot structure in go
+2. Populated the structure with variables needed for the website
+3. Implemented parking spot availability message
+4. Implemented parking spot address message
 
 ### Parking Spot Unit Testing
--Initialization Test
+ -Initialization Test
   - Check if parking spot is initialized
--Availability Test
+- Availability Test
   - Check if the parking spot is available or not and displays result
--Address Test
+- Address Test
   - Check if the parking spot address is populatd, formats it, and displays the full address
