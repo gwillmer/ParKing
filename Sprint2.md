@@ -12,17 +12,20 @@ Updated UI Formatting with a more modern bubble format:
 
 Unit Testing with Cypress:
 1. Flow/Routing Tests
+  
   -Check for Logo on main page
   -Start on Login and click Events Tab, make sure url matches
   -Start on Events and click Sell Tab, make sure url matches
   -Start on Events and click Login Tab, verify page identifier exist and make sure url matches
   -Start on Events and click Register Tab, verify page identifier exist and make sure url matches
 2. Login Tests
+  
   -Start on Login, type in username and click submit button, no login as password field empty
   -Start on Login, type in password and click submit button, no login as username field empty
   -Start on Login, click submit button, no login as username and password field empty
   -Start on Login, type in password and username click submit button, login (sign in event creating)
 3. Registration Tests
+  
   -Start on Registration, type in all fields except email is "exampleemail", invalid email, no login
   -Start on Registration, no password or confirmation password input, no login
   -Start on Registration, no confirmation password input, no login
