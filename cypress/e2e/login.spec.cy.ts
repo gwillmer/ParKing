@@ -19,10 +19,11 @@ describe('Login Page Tests', () => {
     cy.get('[type="submit"]').click()
   });
 
-  it('Username and Password Needed', () => {
+  it('Should Login', () => {
     cy.visit('/login')
     cy.url().should('include', 'login')
+    cy.get('[name="username"]').type('username')
+    cy.get('[name="password"]').type('password')
     cy.get('[type="submit"]').click()
   });
-
 })
