@@ -1,3 +1,4 @@
+![ParKing Logo](/parKingFull@3x.png)
 # Front End
 Sean Ferguson & Christopher Krause
 
