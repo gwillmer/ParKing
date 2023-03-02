@@ -42,4 +42,4 @@ Youtube Link: https://youtu.be/i0xyRB4e23c
 2. Login doesn't route to main page after successful login (WIP)
 
 # Back End
-## Rodrigo Avila Merchan & George Willmer
+#### Rodrigo Avila Merchan & George Willmer
