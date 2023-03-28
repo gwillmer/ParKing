@@ -13,4 +13,3 @@ Members:
   - Chris Krause
 - Back End
   - Rodrigo Avila
-  - George Willmer
