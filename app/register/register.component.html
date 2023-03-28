@@ -24,7 +24,8 @@
       }
       input[type="email"],
       input[type="text"],
-      input[type="password"] {
+      input[type="password"]
+      {
         width: 100%;
         padding: 10px;
         margin-bottom: 1rem;
@@ -46,15 +47,21 @@
   <body>
       <form action="#">
         <h1>Registration</h1>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <label for="password">Confirm Password:</label>
-        <input type="password" id="password" name="password" required>
-        <input type="submit" value="Submit">
+        <label for="registerFirstName">First Name:</label>
+        <input [(ngModel)]="registerFirstName" type="text" />
+        <label for="registerLastName">Last Name:</label>
+        <input [(ngModel)]="registerLastName" type="text" />
+        <label for="registerEmail">Email:</label>
+        <input [(ngModel)]="registerEmail" type="text" />
+        <label for="registerUsername">Username:</label>
+        <input [(ngModel)]="registerUsername" type="text" />
+        <label for="registerPassword">Password:</label>
+        <input [(ngModel)]="registerPassword" type="text" />
+        <label for="registerPassword">Confirm Password:</label>
+        <input [(ngModel)]="registerPassword" type="text" />
+        <label for="registerPhoneNumber">Phone Number:</label>
+        <input [(ngModel)]="registerPhoneNumber" type="text" />
+        <button (click)="register()" >Register</button>
       </form>
 
       <style>

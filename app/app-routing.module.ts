@@ -1,19 +1,23 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EventsComponent } from './events/events.component';
+import { AuthGuard } from './auth.guard';
+import { BuyComponent } from './buy/buy.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
+  /*
   {
     path: '',
-    redirectTo: '/events',
+    redirectTo: '/buy',
     pathMatch: 'full'
   },
+  */
   {
-    path: 'events',
-    component: EventsComponent
+    path: 'buy',
+    component: BuyComponent
   },
   {
     path: 'special-events',
@@ -26,6 +30,16 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  { 
+    path: '', 
+    redirectTo: '/profile', 
+    pathMatch: 'full'
+  },
+  {
+    path:'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
