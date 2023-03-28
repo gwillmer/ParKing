@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 //import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,29 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  loginEmail: string | null = null
-  loginPassword: string | null = null
+  constructor(/*private Auth: AuthService*/) { }
 
-  constructor(
-    private httpClient: HttpClient,
-    private router: Router) { 
-  }
-
-  login(){
-    this.httpClient.post('http://localhost:8080/login', {
-      email: this.loginEmail,
-      password: this.loginPassword
-    }).subscribe((response: any) => {
-      if(response){
-        localStorage.setItem('token', response.jwt)
-        this.router.navigate(['profile'])
-      }
-      this.loginEmail = null
-      this.loginPassword = null
-    })
-  }
-
-  /*
   loginUser(event: any) {
     event.preventDefault()
     const target = event.target
@@ -42,7 +19,6 @@ export class LoginComponent {
     //this.Auth.getUserDetails(username, password)
     console.log(username, password)
   }
-  */
 
 }
 
