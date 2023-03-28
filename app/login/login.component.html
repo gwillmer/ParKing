@@ -1,14 +1,4 @@
 
-<!--
-<div>
-  <h3>Login</h3>
-  <input [(ngModel)]="loginEmail" type="email" placeholder="Email" />
-  <input [(ngModel)]="loginPassword" type="password" placeholder="Password" />
-  <button (click)="login()" [disabled]="!loginEmail || !loginPassword" >Login</button>
-  <button (click)="isLogin=false">Register an Account?</button>
-</div>
--->
-
 <html>
   <head>
     <meta charset="UTF-8">
@@ -52,15 +42,17 @@
   </head>
   <body>
 
-      <form (submit)="login()">
+
+      <form (submit)="loginUser($event)">
       <h1>Login</h1>
       
-      <label for="loginEmail">Email:</label>
+      <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
-      <label for="loginPassword">Password:</label>
-      <input type="text" id="password" name="password" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
       <input type="submit" value="Submit">
       </form>
+
 
     <style>
     body {
