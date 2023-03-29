@@ -20,19 +20,21 @@ describe('Navigates between tabs', () => {
   it('Clicks on Login', () => {
       cy.visit('/events')
       cy.get('[routerLink="/login"]').click()
-      cy.contains('loginEmail').should('exist')
-      cy.contains('Password').should('exist')
+      cy.get('input[type="email"]').should('exist')
+      cy.get('input[type="password"]').should('exist')
       cy.url().should('include', 'login') 
   });
 
   it('Clicks on Register', () => {
       cy.visit('/events')
       cy.get('[routerLink="/register"]').click()
-      cy.contains('Registration').should('exist')
-      cy.contains('Email:').should('exist')
-      cy.contains('Username:').should('exist')
-      cy.contains('Password:').should('exist')
-      cy.contains('Confirm Password:').should('exist')
+      
+      cy.contains('Register Account').should('exist')
+      cy.get('input[type="text"]').should('exist')
+      cy.get('input[type="email"]').should('exist')
+      cy.get('input[type="password"]').should('exist')
+      cy.get('input[type="email"]').should('exist')
+      cy.get('input[type="number"]').should('exist')
       cy.url().should('include', 'register') 
   });
 
