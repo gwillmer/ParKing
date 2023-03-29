@@ -10,11 +10,29 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginEmail: string | null = null
   loginPassword: string | null = null
+  showEmailAlert: boolean = false
   constructor(
     private httpClient: HttpClient,
     private router: Router
   ){
   }
+  validateEmail(email: string | null): boolean{
+    if (!email) {
+      return true;
+    }
+    // Regular expression to check for valid email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  }
+  infocheck(){
+    if (!this.validateEmail(this.loginEmail)) {
+      this.showEmailAlert = true;
+    }
+    else {
+      this.showEmailAlert = false;
+  }
+}
+
   login(){
     this.httpClient.post('http://localhost:8080/login', {
       email: this.loginEmail,

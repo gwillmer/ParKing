@@ -8,7 +8,7 @@ describe('Navigates between tabs', () => {
   it('Clicks on Buy', () => {
     cy.visit('/login')
     cy.contains('Buy').click()
-    cy.url().should('include', 'events') 
+    cy.url().should('include', 'buy') 
   });
 
   it('Clicks on Sell', () => {
@@ -20,8 +20,8 @@ describe('Navigates between tabs', () => {
   it('Clicks on Login', () => {
       cy.visit('/events')
       cy.get('[routerLink="/login"]').click()
-      cy.contains('Username:').should('exist')
-      cy.contains('Password:').should('exist')
+      cy.contains('loginEmail').should('exist')
+      cy.contains('Password').should('exist')
       cy.url().should('include', 'login') 
   });
 

@@ -23,26 +23,27 @@ export class RegisterComponent {
   }
   validateEmail(email: string | null): boolean{
     if (!email) {
-      return false;
+      return true;
     }
     // Regular expression to check for valid email format
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
   }
-  
+  infocheck(){
+    if (!this.validateEmail(this.registerEmail)) {
+      this.showEmailAlert = true;
+    }
+    else {
+      this.showEmailAlert = false;
+    }
+    if (this.registerPassword != this.confirmPassword){
+      this.showPWAlert = true;
+    }
+    else{
+      this.showPWAlert = false;
+    }
+  }
   register(){
-  if (!this.validateEmail(this.registerEmail)) {
-    this.showEmailAlert = true;
-  }
-  else {
-    this.showEmailAlert = false;
-  }
-  if (this.registerPassword != this.confirmPassword){
-    this.showPWAlert = true;
-  }
-  else{
-    this.showPWAlert = false;
-  }
     //alert('Please enter a valid email address.');
     console.log(this.registerFirstName, this.registerPassword)
     this.httpClient.post('http://localhost:8080/register', {

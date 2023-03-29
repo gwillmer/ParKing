@@ -34,18 +34,27 @@
 			background: white;
       border-radius: 35px;
 		  }
+      .alert {
+      background-color: #f44336;
+      color: white;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      }
     </style>
   </head>
-  <body>
-      
+  <body> 
       <div>
         <h1>Login</h1>
         <input [(ngModel)]="loginEmail" type="email" placeholder="Email" required/>
         <input [(ngModel)]="loginPassword" type="password" placeholder="Password" required/>
+        {{infocheck()}}
         <button (click)="login()" type="submit" [disabled]="!loginEmail || !loginPassword" >Login</button>
       </div>
-
-
   </body>
-
+  <p></p>
+  <div *ngIf="showEmailAlert" class="alert">
+    NOT A VALID EMAIL
+  </div>
 </html>

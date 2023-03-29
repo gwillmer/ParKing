@@ -66,17 +66,18 @@
       <input [(ngModel)]="registerPassword" type="password" placeholder="Password" />
       <input [(ngModel)]="confirmPassword" type="password" placeholder="Confirm Password" />
       <input [(ngModel)]="registerPhoneNumber" type="number" placeholder="Phone Number" />
-      <button (click)="register()" type="submit" [disabled]="(!registerFirstName || !registerLastName || !registerEmail || !registerPassword || !registerPhoneNumber) && showEmailAlert" >Register</button>
+      {{infocheck()}}
+      <button (click)="register()" type="submit" [disabled]="(!registerFirstName || !registerLastName || !registerEmail || !registerPassword || !registerPhoneNumber) || showEmailAlert || showPWAlert" >Register</button>
     </div>
   </body>
   <p></p>
 
-  <body>
-    <div *ngIf="showEmailAlert" class="alert">
-      NOT A VALID EMAIL
-    </div>
-    <div *ngIf="showPWAlert" class="alert">
-      PASSWORDS DO NOT MATCH
-    </div>
-  </body>
+
+  <div *ngIf="showEmailAlert" class="alert">
+    NOT A VALID EMAIL
+  </div>
+  <div *ngIf="showPWAlert" class="alert">
+    PASSWORDS DO NOT MATCH
+  </div>
+
 </html>
