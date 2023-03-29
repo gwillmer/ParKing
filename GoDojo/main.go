@@ -26,25 +26,27 @@ type Claims struct {
 var jwtKey = []byte("secret_key_yall")
 
 type Register struct {
-	FirstName string `json: firstName`
-	LastName  string `json: lastName`
-	Email     string `json: email`
-	Password  string `json: password`
-	Username  string `json: username`
+	FirstName   string `json:"firstName"`
+	LastName    string `json:"lastName"`
+	Email       string `json:"email"`
+	Password    string `json:"password"`
+	Username    string `json:"username"`
+	PhoneNumber uint   `json:"phoneNumber"`
 }
 
 type Login struct {
-	Email    string `json: email`
-	Password string `json: password`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 type User struct {
-	ID        uint
-	FirstName string `gorm:"column:firstName`
-	LastName  string `gorm:"column:lastName"`
-	Email     string
-	Username  string
-	Password  string
+	ID          uint
+	FirstName   string `gorm:"column:firstName"`
+	LastName    string `gorm:"column:lastName"`
+	Email       string
+	Username    string `gorm:"column:username"`
+	Password    string
+	PhoneNumber uint `gorm:"column:phoneNumber"`
 }
 
 type ParkingSpot struct {
@@ -97,7 +99,7 @@ func auth() gin.HandlerFunc {
 }
 
 func main() {
-	dsn := "root:@tcp(127.0.0.1:3306)/rasyuenet?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:@tcp(127.0.0.1:3306)/parKing?charset=utf8mb4&parseTime=True&loc=Local"
 	r := gin.Default()
 
 	config := cors.DefaultConfig()
@@ -126,7 +128,7 @@ func main() {
 		// db connection
 		db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 		user = User{FirstName: registerData.FirstName, LastName: registerData.LastName,
-			Email: registerData.Email, Password: hashPass}
+			Email: registerData.Email, Password: hashPass, PhoneNumber: registerData.PhoneNumber, Username: registerData.Username}
 		db.Create(&user) // pass pointer of data to Create
 		// create jwt to login
 		expirationTime := time.Now().Add(30000 * time.Minute)
