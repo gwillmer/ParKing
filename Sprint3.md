@@ -2,7 +2,7 @@
 # Front End
 #### Sean Ferguson & Christopher Krause
 
-Youtube Link: 
+Youtube Link: https://youtu.be/caV0mjbC70M
 
 #### New and Updated features:
 1. Implemented a Sell/Listing screen
