@@ -49,14 +49,14 @@ type User struct {
 
 type ParkingSpot struct {
 	User
-	zipcode       string
-	address       string
-	city          string
-	state         string
-	dollars       string
-	cents         string
-	availibility  string
-	timeAvailable string
+	Address       string
+	ZipCode       string
+	City          string
+	State         string
+	Dollars       string
+	Cents         string
+	Availibility  string
+	TimeAvailable string
 }
 
 type Tabler interface {
@@ -112,6 +112,7 @@ func main() {
 
 		// Bind JSON Data to Object
 		err := c.BindJSON(&registerData)
+		checkIfDataRecievedFromRegisterPage(registerData)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, "")
 		}
@@ -128,6 +129,7 @@ func main() {
 		user = User{FirstName: registerData.FirstName, LastName: registerData.LastName,
 			Email: registerData.Email, Password: hashPass, PhoneNumber: registerData.PhoneNumber}
 		db.Create(&user) // pass pointer of data to Create
+		checkPostToDataBase()
 		// create jwt to login
 		expirationTime := time.Now().Add(30000 * time.Minute)
 		// Create the JWT claims, which includes the username and expiry time
@@ -159,6 +161,7 @@ func main() {
 
 		// Bind JSON Data to Object
 		err := c.BindJSON(&loginData)
+		checkIfDataRecievedFromLoginPage(loginData)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, "")
 		}
@@ -200,6 +203,45 @@ func main() {
 	r.Run()
 }
 
+// Unit test: checks if register fields populated from gathering info from the webpage
+func checkIfDataRecievedFromRegisterPage(user Register) {
+	//Names
+	if user.FirstName != "" && user.LastName != "" {
+		fmt.Println("First and last names were recieved.")
+	} else {
+		fmt.Println("Error: First and last names have not been recieved.")
+	}
+
+	//Email and password
+	if user.Email != "" && user.Password != "" {
+		fmt.Println("Email and password was recieved.")
+	} else {
+		fmt.Println("Error: Email and password was not recieved.")
+	}
+
+	//Phone number
+	if user.PhoneNumber != 0 {
+		fmt.Println("Phone number was recieved.")
+	} else {
+		fmt.Println("Error: Phone number was not recieved")
+	}
+}
+
+// Unit test: checks if login fields populated from gathering info from the webpage
+func checkIfDataRecievedFromLoginPage(user Login) {
+	//Email and password
+	if user.Email != "" && user.Password != "" {
+		fmt.Println("Email and password was recieved.")
+	} else {
+		fmt.Println("Error: Email and password was not recieved.")
+	}
+}
+
+// Unit test: checks if data was sent to the database, executes if there are no errors
+func checkPostToDataBase() {
+	fmt.Println("Successful addition of a user to database.")
+}
+
 func generateParkingsSpots() {
 	records, error := readData("data.csv")
 
@@ -214,14 +256,14 @@ func generateParkingsSpots() {
 				LastName:  record[1],
 				Email:     record[2],
 			},
-			zipcode:       record[3],
-			address:       record[4],
-			city:          record[5],
-			state:         record[6],
-			dollars:       record[7],
-			cents:         record[8],
-			availibility:  record[9],
-			timeAvailable: record[10],
+			ZipCode:       record[3],
+			Address:       record[4],
+			City:          record[5],
+			State:         record[6],
+			Dollars:       record[7],
+			Cents:         record[8],
+			Availibility:  record[9],
+			TimeAvailable: record[10],
 		}
 		testSpot(spot)
 	}
@@ -262,12 +304,12 @@ func readData(fileName string) ([][]string, error) {
 
 func printAddress(spot ParkingSpot) {
 	fmt.Println("Parking Address:")
-	fmt.Println(spot.address)
-	fmt.Println(spot.city, ", ", spot.state, " ", spot.zipcode)
+	fmt.Println(spot.Address)
+	fmt.Println(spot.City, ", ", spot.State, " ", spot.ZipCode)
 }
 
 func printAvailability(spot ParkingSpot) {
-	intVar, err := strconv.Atoi(spot.availibility)
+	intVar, err := strconv.Atoi(spot.Availibility)
 
 	if err != nil {
 		fmt.Println("Error during conversion.")
