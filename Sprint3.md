@@ -63,18 +63,23 @@ Youtube Link:
 # Back End
 #### Rodrigo Avila Merchan
 
-### Created Parking Spot Structure:
-1. Implemented parking spot structure in go
-2. Populated the structure with variables needed for the website
-3. Implemented parking spot availability message
-4. Implemented parking spot address message
+### New and Updated features:
+1. Implemented database with mySQL
+2. Implemented user table for data gathering and data population from website
+3. Implemented frontend and backend communication functionality, frontend and backend now talk to each other (GET,POST)
 
-### Parking Spot Unit Testing
-- Initialization Test
-  -  Check if parking spot is initialized and populates with randomly genreated data from csv file 
-- Availability Test
-  - Check if the parking spot is available or not and displays result
-- Address Test
-  - Check if the parking spot address is populatd, formats it, and displays the full address
+### Created Register and Login Structures:
+1. Implemented register and login structures in go. The goal of these structures is to creat insatnces of them and populate there respective fields based on the data gathered from the register and login endpages.  
+2. Populated the structures variables with data acquired from the website
+3. Implemented HTTP post to user database table for the register page
+4. Implemented checking database table for an already registered user for login page purposes
+
+### Register and Login Unit Testing
+- Register Data Test
+  -  Checks if register object is populated with user input data from register endpage. Displays data if successful, else throws a not recieved error.
+- Login Data Test
+  - Checks if login object is populated with user input data from login endpage. Displays data if successful, else throws a not recieved error.
+- Post Data Test
+  - Checks if the user registration data was posted onto the user database table. Displays success message if no errors occur.
 
 ### Backend API
