@@ -10,6 +10,7 @@ Youtube Link:
 3. Integratted back end login and registration
 4. Recreated form styling with ngModel inputs
 5. Recreated Cypress testing based on ngModel forms
+6. Cleaned GitHub to remove unnecessary files
 
 #### Unit Testing with Cypress (recreated old testing):
 - Flow/Routing Tests
