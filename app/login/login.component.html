@@ -13,7 +13,7 @@
         align-items: center;
         height: 100vh;
       }
-      form {
+      div {
         padding: 2rem; 
         border-radius: 35px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -40,17 +40,13 @@
     </style>
   </head>
   <body>
-
-      <form>
-      <h1>Login</h1>
       
-      <label for="loginEmail">Email:</label>
-      <input [(ngModel)]="loginEmail" type="email" />
-      <label for="loginPassword">Password:</label>
-      <input [(ngModel)]="loginPassword" type="password" />
-      <button (click)="login()">Submit</button>
-      
-      </form>
+      <div>
+        <h3>Login</h3>
+        <input [(ngModel)]="loginEmail" type="email" placeholder="Email" required/>
+        <input [(ngModel)]="loginPassword" type="password" placeholder="Password" />
+        <button (click)="login()" type="submit" [disabled]="!loginEmail || !loginPassword" >Login</button>
+      </div>
 
     <style>
     body {

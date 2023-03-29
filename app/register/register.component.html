@@ -17,14 +17,15 @@
         align-items: center;
         height: 100vh;
       }
-      form {
+      div {
         padding: 2rem;
         border-radius: 35px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
       }
       input[type="email"],
       input[type="text"],
-      input[type="password"]
+      input[type="password"],
+      input[type="number"]
       {
         width: 100%;
         padding: 10px;
@@ -33,7 +34,7 @@
         border: 1px solid #ccc;
         border-radius: 25px;
       }
-      input[type="submit"] {
+      button[type="submit"] {
         background-color: #f2c2d4;
         color: white;
         padding: 10px 20px;
@@ -45,24 +46,16 @@
     </style>
   </head>
   <body>
-      <form action="#">
-        <h1>Registration</h1>
-        <label for="registerFirstName">First Name:</label>
-        <input [(ngModel)]="registerFirstName" type="text" />
-        <label for="registerLastName">Last Name:</label>
-        <input [(ngModel)]="registerLastName" type="text" />
-        <label for="registerEmail">Email:</label>
-        <input [(ngModel)]="registerEmail" type="text" />
-        <label for="registerUsername">Username:</label>
-        <input [(ngModel)]="registerUsername" type="text" />
-        <label for="registerPassword">Password:</label>
-        <input [(ngModel)]="registerPassword" type="text" />
-        <label for="registerPassword">Confirm Password:</label>
-        <input [(ngModel)]="registerPassword" type="text" />
-        <label for="registerPhoneNumber">Phone Number:</label>
-        <input [(ngModel)]="registerPhoneNumber" type="text" />
-        <button (click)="register()" >Register</button>
-      </form>
+    <div>
+      <h3>Register Account</h3>
+      <input [(ngModel)]="registerFirstName" type="text" placeholder="First Name" />
+      <input [(ngModel)]="registerLastName" type="text" placeholder="Last Name" />
+      <input [(ngModel)]="registerEmail" type="email" placeholder="Email" required/>
+      <input [(ngModel)]="registerPassword" type="password" placeholder="Password" />
+      <input type="password" placeholder="Confirm Password" />
+      <input [(ngModel)]="registerPhoneNumber" type="number" placeholder="Phone Number" />
+      <button (click)="register()" type="submit" [disabled]="!registerFirstName || !registerLastName || !registerEmail || !registerPassword || !registerPhoneNumber" >Register</button>
+    </div>
 
       <style>
         body {
