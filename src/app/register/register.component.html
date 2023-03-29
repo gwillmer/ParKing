@@ -17,14 +17,15 @@
         align-items: center;
         height: 100vh;
       }
-      form {
+      div {
         padding: 2rem;
         border-radius: 35px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
       }
       input[type="email"],
       input[type="text"],
-      input[type="password"]
+      input[type="password"],
+      input[type="number"]
       {
         width: 100%;
         padding: 10px;
@@ -49,12 +50,12 @@
       <h3>Register Account</h3>
       <input [(ngModel)]="registerFirstName" type="text" placeholder="First Name" />
       <input [(ngModel)]="registerLastName" type="text" placeholder="Last Name" />
-      <input [(ngModel)]="registerEmail" type="email" placeholder="Email" />
+      <input [(ngModel)]="registerEmail" type="email" placeholder="Email" required/>
       <input [(ngModel)]="registerUsername" type="text" placeholder="Username" />
       <input [(ngModel)]="registerPassword" type="password" placeholder="Password" />
-      <input [(ngModel)]="registerPassword" type="password" placeholder="Password" />
+      <input type="password" placeholder="Confirm Password" />
       <input [(ngModel)]="registerPhoneNumber" type="number" placeholder="Phone Number" />
-      <button (click)="register()" [disabled]="!registerFirstName || !registerLastName || !registerEmail || !registerUsername || !registerPassword || !registerPhoneNumber" >Register</button>
+      <button (click)="register()" type="submit" [disabled]="!registerFirstName || !registerLastName || !registerEmail || !registerUsername || !registerPassword || !registerPhoneNumber" >Register</button>
     </div>
 
       <style>
