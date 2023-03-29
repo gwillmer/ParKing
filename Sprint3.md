@@ -83,3 +83,24 @@ Youtube Link:
   - Checks if the user registration data was posted onto the user database table. Displays success message if no errors occur.
 
 ### Backend API
+- Classes and interface
+  - Claims struct 
+  - Register struct
+  - Login struct
+  - User struct
+  - ParkingSpot struct
+  - Tabler interface
+- Functions
+  - func (User) TableName()
+  - func HashPassword()
+  - func CheckPasswordHash()
+  - func auth()
+  - func main()
+  - func checkIfDataRecievedFromRegisterPage()
+  - func checkIfDataRecievedFromLoginPage()
+  - func checkPostToDataBase()
+  - func generateParkingsSpots()
+  - func testSpot()
+  - func readData()
+  - func printAddress()
+  - func printAvailability()
