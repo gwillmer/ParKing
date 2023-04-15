@@ -6,6 +6,11 @@
         body {
         font-family: Arial, sans-serif;
         }
+        div {
+        padding: 2rem;
+        border-radius: 35px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      }
         .container {
         display: flex;
         flex-direction: column;
@@ -61,21 +66,30 @@
         border: 1px solid #ccc;
         border-radius: 25px;
         }
+
+        button[type="submit"] {
+        background-color: #f2c2d4;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
 
 
-    <form>
-        <h1>Create Listing</h1>
+    <div>
+      <h1>Create Listing</h1>
         
-        <label for="address">Address:</label>
-        <input [(ngModel)]="listingAddress" type="text" placeholder="Address" required/>
-        <label for="zipcode">Zip Code (i.e.: XXXXX):</label>
-        <input [(ngModel)]="listingZipCode" type="number" placeholder="Zip Code" required/>
-        
+      <label for="address">Address:</label>
+      <input [(ngModel)]="listingAddress" type="text" placeholder=""/>
+      <label for="zipcode">Zip Code (i.e.: XXXXX):</label>
+      <input [(ngModel)]="listingZipCode" type="number" placeholder=""/>
 
-        <label for="state">Select state:</label>
+      <label for="state">Select state:</label>
         <select id="state" name="state">
             <option value="AL">AL</option>
             <option value="AK">AK</option>
@@ -130,8 +144,6 @@
             <option value="WY">WY</option>
         </select>
 
-
-
         <label for="ParkingSize">Size of Parking Spot Avaliable:</label>
         <select name="ParkingSize" id="ParkingSize">
             <option value="compact">U.S. Compact - 8ft x 16ft</option>
@@ -144,16 +156,14 @@
             <option value="largetruck">Large Trucker - 15ft x 40ft</option>
         </select>
 
-        <label for="sdate">Start Date:</label>
-        <input [(ngModel)]="listingStartDate" type="date" placeholder="Start Date" required/>
+        <label>Start Date:</label>
+        <input [(ngModel)]="listingStartDate" type="date" placeholder=""/>
 
-        <label for="edate">End Date:</label>
-        <input [(ngModel)]="listingEndDate" type="date" placeholder="End Date" required/>
-
-
-
+        <label>End Date:</label>
+        <input [(ngModel)]="listingEndDate" type="date" placeholder=""/>
+        
         <label for="description">Description:</label>
-        <input [(ngModel)]="listingDescription" type="text" placeholder="Description" required/>
+        <input [(ngModel)]="listingDescription" type="text" placeholder=""/>
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <label for="image">Select an Image:</label>
             <p> </p>
@@ -161,7 +171,8 @@
         </form>
         <p> </p>
         <button (click)="listing()" type="submit">Submit</button>
-    </form>
+
+    </div>
 
 
 

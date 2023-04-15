@@ -208,17 +208,17 @@ func main() {
 	//Sell page endpoint
 	r.POST("/special-events", func(c *gin.Context) {
 		var listingData Listing
-		listingData.Address = "630 NW 36th Street"
-		listingData.ZipCode = 32607
-		listingData.StartDate = "04/14/2023"
-		listingData.EndDate = "04/15/2023"
-		listingData.Description = "testing"
+		//listingData.Address = "630 NW 36th Street"
+		//listingData.ZipCode = 32607
+		//listingData.StartDate = "04/14/2023"
+		//listingData.EndDate = "04/15/2023"
+		//listingData.Description = "testing"
 		// Bind JSON Data to Object
-		//////err := c.BindJSON(&listingData)
-		////////checkIfDataRecievedFromSellPage(listingData)
-		//if err != nil {
-		//	c.JSON(http.StatusInternalServerError, "")
-		//}
+		err := c.BindJSON(&listingData)
+		checkIfDataRecievedFromSellPage(listingData)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, "")
+		}
 
 		var pSpot ParkingSpot
 		// db connection
