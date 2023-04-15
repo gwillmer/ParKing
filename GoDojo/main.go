@@ -3,10 +3,8 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
-	"log"
 	"net/http"
 	"os"
-	"strconv"
 	"strings"
 	"time"
 
@@ -38,6 +36,17 @@ type Login struct {
 	Password string `json:"password"`
 }
 
+type Listing struct {
+	Email       string
+	Address     string `json:"address"`
+	ZipCode     uint   `json:"zipCode"`
+	State       string `json:"state"`
+	Size        string `json:"size"`
+	StartDate   string `json:"startDate"`
+	EndDate     string `json:"endDate"`
+	Description string `json:"description"`
+}
+
 type User struct {
 	ID          uint
 	PhoneNumber uint   `gorm:"column:phonenumber"`
@@ -48,15 +57,14 @@ type User struct {
 }
 
 type ParkingSpot struct {
-	User
-	Address       string
-	ZipCode       string
-	City          string
-	State         string
-	Dollars       string
-	Cents         string
-	Availibility  string
-	TimeAvailable string
+	ID          uint
+	Address     string `gorm:"column:address"`
+	ZipCode     uint   `gorm:"column:zipCode"`
+	State       string `gorm:"column:state"`
+	Size        string `gorm:"column:size"`
+	StartDate   string `gorm:"column:startDate"`
+	EndDate     string `gorm:"column:endDate"`
+	Description string `gorm:"column:description"`
 }
 
 type Tabler interface {
@@ -65,6 +73,10 @@ type Tabler interface {
 
 func (User) TableName() string {
 	return "user"
+}
+
+func (ParkingSpot) TableName() string {
+	return "parkingspot"
 }
 
 func HashPassword(password string) (string, error) {
@@ -193,6 +205,52 @@ func main() {
 		}
 	})
 
+	//Sell page endpoint
+	r.POST("/special-events", func(c *gin.Context) {
+		var listingData Listing
+		listingData.Address = "630 NW 36th Street"
+		listingData.ZipCode = 32607
+		listingData.StartDate = "04/14/2023"
+		listingData.EndDate = "04/15/2023"
+		listingData.Description = "testing"
+		// Bind JSON Data to Object
+		//////err := c.BindJSON(&listingData)
+		////////checkIfDataRecievedFromSellPage(listingData)
+		//if err != nil {
+		//	c.JSON(http.StatusInternalServerError, "")
+		//}
+
+		var pSpot ParkingSpot
+		// db connection
+		db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+		pSpot = ParkingSpot{Address: listingData.Address, ZipCode: listingData.ZipCode,
+			State: listingData.State, Size: listingData.Size, StartDate: listingData.StartDate,
+			EndDate: listingData.EndDate, Description: listingData.Description}
+		db.Create(&pSpot) // pass pointer of data to Create
+		// create jwt to login
+		expirationTime := time.Now().Add(30000 * time.Minute)
+		// Create the JWT claims, which includes the username and expiry time
+		claims := &Claims{
+			Email: listingData.Email,
+			RegisteredClaims: jwt.RegisteredClaims{
+				// In JWT, the expiry time is expressed as unix milliseconds
+				ExpiresAt: jwt.NewNumericDate(expirationTime),
+			},
+		}
+		token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+		// Create the JWT string
+		tokenString, err := token.SignedString(jwtKey)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, "")
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"message": "Success",
+			"id":      pSpot.ID,
+			"jwt":     tokenString,
+		})
+	})
+
 	r.GET("/user-session", auth(), func(c *gin.Context) {
 
 		c.JSON(http.StatusOK, gin.H{
@@ -201,6 +259,26 @@ func main() {
 	})
 
 	r.Run()
+}
+
+func checkIfDataRecievedFromSellPage(spot Listing) {
+	if spot.Address != "" && spot.ZipCode != 0 {
+		fmt.Println("Address and zipcode were recieved.")
+	} else {
+		fmt.Println("Error: Address and zipcode were not recieved.")
+	}
+
+	if spot.StartDate != "" && spot.EndDate != "" {
+		fmt.Println("Start and end dates were recieved.")
+	} else {
+		fmt.Println("Error: Start and end dates were not recieved.")
+	}
+
+	if spot.Description != "" {
+		fmt.Println("Description was recieved.")
+	} else {
+		fmt.Println("Error: Description was not recieved.")
+	}
 }
 
 // Unit test: checks if register fields populated from gathering info from the webpage
@@ -242,7 +320,7 @@ func checkPostToDataBase() {
 	fmt.Println("Successful addition of a user to database.")
 }
 
-func generateParkingsSpots() {
+/*func generateParkingsSpots() {
 	records, error := readData("data.csv")
 
 	if error != nil {
@@ -267,12 +345,12 @@ func generateParkingsSpots() {
 		}
 		testSpot(spot)
 	}
-}
+}*/
 
 func testSpot(spot ParkingSpot) {
 	printAddress(spot)
 	fmt.Println()
-	printAvailability(spot)
+	//printAvailability(spot)
 	fmt.Println()
 }
 
@@ -305,11 +383,11 @@ func readData(fileName string) ([][]string, error) {
 func printAddress(spot ParkingSpot) {
 	fmt.Println("Parking Address:")
 	fmt.Println(spot.Address)
-	fmt.Println(spot.City, ", ", spot.State, " ", spot.ZipCode)
+	//fmt.Println(spot.City, ", ", spot.State, " ", spot.ZipCode)
 }
 
-func printAvailability(spot ParkingSpot) {
-	intVar, err := strconv.Atoi(spot.Availibility)
+/*func printAvailability(spot ParkingSpot) {
+	intVar, err := strconv.Atoi(spot.Availibily)
 
 	if err != nil {
 		fmt.Println("Error during conversion.")
@@ -325,4 +403,4 @@ func printAvailability(spot ParkingSpot) {
 	} else {
 		fmt.Println("Error with this parking spot's availability.")
 	}
-}
+}*/
