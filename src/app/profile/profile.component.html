@@ -1,1 +1,86 @@
-<p>profile works!</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        }
+
+        div {
+        padding: 2rem; 
+        border-radius: 35px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      }
+
+        .profile-picture {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        }
+
+        /* CSS for profile information */
+        .profile-info {
+        margin-top: 50px;
+        }
+        .profile-info h1 {
+        margin-bottom: 0;
+        }
+        .profile-info p {
+        margin-top: 10px;
+        font-size: 16px;
+        }
+
+        /* CSS for navigation menu */
+        .navigation {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        }
+        .navigation a {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px;
+        cursor: pointer;
+        }
+    </style>
+     <script>
+        // JavaScript for routing
+        function goToHome() {
+            <a routerLink="/" class="btn btn-primary">Login</a>
+        }
+        function logout() {
+            <a routerLink="/login" class="btn btn-primary">Login</a>
+        }
+      </script>
+  </head>
+  <body>
+    <!-- Profile picture -->
+    <img class="profile-picture" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="User Profile Picture">
+
+    <!-- Profile information -->
+    <div class="profile-info">
+      <h1>User Name</h1>
+      <p>Email: user@example.com</p>
+      <p>Location: City, Country</p>
+    
+      <p>Phone: (123) 456 7890</p>
+
+
+    <!-- Navigation menu -->
+
+      <a href="#">Home</a>
+      <a href="#">My Profile</a>
+      <a href="#">Settings</a>
+      <a href="#">Logout</a>
+    </div>
+  </body>
+</html>
