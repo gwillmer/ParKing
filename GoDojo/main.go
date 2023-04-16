@@ -208,11 +208,6 @@ func main() {
 	//Sell page endpoint
 	r.POST("/special-events", func(c *gin.Context) {
 		var listingData Listing
-		//listingData.Address = "630 NW 36th Street"
-		//listingData.ZipCode = 32607
-		//listingData.StartDate = "04/14/2023"
-		//listingData.EndDate = "04/15/2023"
-		//listingData.Description = "testing"
 		// Bind JSON Data to Object
 		err := c.BindJSON(&listingData)
 		checkIfDataRecievedFromSellPage(listingData)
@@ -266,6 +261,18 @@ func checkIfDataRecievedFromSellPage(spot Listing) {
 		fmt.Println("Address and zipcode were recieved.")
 	} else {
 		fmt.Println("Error: Address and zipcode were not recieved.")
+	}
+
+	if spot.State != "" {
+		fmt.Println("State was received.")
+	} else {
+		fmt.Println("Error: State was not recieved.")
+	}
+
+	if spot.Size != "" {
+		fmt.Println("Size was received.")
+	} else {
+		fmt.Println("Error: Size was not recieved.")
 	}
 
 	if spot.StartDate != "" && spot.EndDate != "" {
