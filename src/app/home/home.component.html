@@ -5,27 +5,12 @@
 	<style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2c2d400;
+            background-color: #00000000;
+            margin: 10px auto;
+            text-align: center;
+            width: 1200px;
         }
-		.slider {
-			position: relative;
-			height: 300px;
-			overflow: hidden;
-		}
-		.slider img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-			transition: opacity 1s ease-in-out;
-		}
-		.slider img.active {
-			opacity: 1;
-		}
 
-		/* Centered text */
 		.centered {
 			text-align: center;
 			margin-top: 50px;
@@ -35,7 +20,6 @@
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 		}
 
-		/* Team section */
 		.team {
 			display: flex;
 			flex-wrap: wrap;
@@ -57,15 +41,61 @@
             border-radius: 35px;
 			margin-bottom: 10px;
 		}
+
+        .content {
+            max-width: 1200px;
+            text-align: left;
+            margin: auto;
+        }
+        .simple-ss {
+            width: 1200px;
+            height: 300px;
+            
+            background-color: #eeeeee;
+            margin: auto;
+            background-image: url("https://cdn.discordapp.com/attachments/1072287256548741160/1097301969258958928/test.png");
+            animation-name: slide;
+            animation-duration: 32s;
+            animation-direction: normal;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            margin-top: 50px;
+            padding: 2rem; 
+            border-radius: 35px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        }
+        @keyframes slide {
+        0% {
+          background-position: 0 0;
+        }
+        16.66% {
+          background-position: 0 0;
+        }
+        33.32% {
+          background-position: -1200px 0;
+        }
+        49.98% {
+          background-position: -1200px 0;
+        }
+        66.64% {
+          background-position: -2400px 0;
+        }
+        83.30% {
+          background-position: -2400px 0;
+        }
+        100% {
+          background-position: 0 0;
+        }
+      }
 	</style>
 </head>
 <body>
 
-	<div class="slider">
-		<img src="https://cdn.discordapp.com/attachments/1072287256548741160/1097280150900584609/parking1.png" class="active">
-		<img src="https://cdn.discordapp.com/attachments/1072287256548741160/1097281399859462194/WarOnParking_TA_GettyImages-83314262.png">
-		<img src="image3.jpg">
-	</div>
+    <div class="simple-ss"></div>
+    <div class="content"></div>
+
+
     <div class="centered">
 		<h1>Welcome to ParKing!</h1>
 		<p>At ParKing, our mission is to revolutionize the way people park by providing a convenient and innovative platform for booking and listing available parking spaces in your area. Founded in 2023 by University of Florida students, we aim to simplify parking for our users by allowing them to get paid for land they already own or park closer to events they are attending. We offer short-term and long-term parking options to cater to our users' needs. Our goal is to streamline the parking process with a user-friendly interface and exceptional customer service, making parking stress-free and hassle-free. Join us in transforming the parking industry, one spot at a time.</p>
@@ -73,19 +103,19 @@
 
 	<div class="team">
 		<div class="team-member">
-			<img src="https://cdn.discordapp.com/attachments/1072287256548741160/1097280164607578162/team1.jpg">
+			<img src="https://melmagazine.com/wp-content/uploads/2021/01/66f-1.jpg">
 			<h2>Sean Ferguson</h2>
-			<p>Founder & CEO</p>
+			<p>Founder & CEO (Front End)</p>
 		</div>
 		<div class="team-member">
-			<img src="team2.jpg">
+			<img src="https://melmagazine.com/wp-content/uploads/2021/01/66f-1.jpg">
 			<h2>Rodrigo Avila</h2>
-			<p>Founder & CEO</p>
+			<p>Founder & CEO (Back End)</p>
 		</div>
 		<div class="team-member">
-			<img src="team3.jpg">
-			<h2>Chris</h2>
-			<p>Founder & CEO</p>
+			<img src="https://melmagazine.com/wp-content/uploads/2021/01/66f-1.jpg">
+			<h2>Chris Krause</h2>
+			<p>Founder & CEO (Front End)</p>
 		</div>
 	</div>
 

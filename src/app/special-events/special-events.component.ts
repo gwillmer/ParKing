@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./special-events.component.css']
 })
 export class SpecialEventsComponent {
-
   listingAddress: string | null = null
   listingZipCode: string | null = null
   listingState: string | null = null
