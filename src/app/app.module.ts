@@ -10,6 +10,7 @@ import { BuyComponent } from './buy/buy.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JwtInterceptor } from './jwt.interceptor';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { JwtInterceptor } from './jwt.interceptor';
     LoginComponent,
     BuyComponent,
     SpecialEventsComponent,
-    ProfileComponent
+    ProfileComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

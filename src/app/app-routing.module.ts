@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   /*
@@ -33,8 +34,12 @@ const routes: Routes = [
   },
   { 
     path: '', 
-    redirectTo: '/profile', 
+    redirectTo: '/home', 
     pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path:'profile',
