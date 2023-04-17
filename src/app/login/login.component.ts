@@ -33,6 +33,7 @@ export class LoginComponent {
   }
 }
 
+/*
   login(){
     this.httpClient.post('http://localhost:8080/login', {
       email: this.loginEmail,
@@ -41,12 +42,30 @@ export class LoginComponent {
       if(response){
         localStorage.setItem('token', response.jwt)
         this.router.navigate(['profile'])
+        //bool login == true change hot bar
       }
-      this.loginEmail = null
       this.loginPassword = null
     })
   }
 }
+*/
+
+login(){
+  this.httpClient.post('http://localhost:8080/login', {
+    email: this.loginEmail,
+    password: this.loginPassword
+  }).subscribe((response: any) => {
+    if(response){
+      localStorage.setItem('token', response.jwt)
+      localStorage.setItem('user', JSON.stringify(response.user)) // Store user info in local storage
+      this.router.navigate(['profile'])
+      //bool login == true change hot bar
+    }
+    this.loginPassword = null
+  })
+}
+}
+
 
 /*
 import { HttpClient } from '@angular/common/http';

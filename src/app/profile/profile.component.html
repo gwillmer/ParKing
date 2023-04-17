@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Profile Page</title>
     <style>
-		body {
+		    body {
             font-family: Arial, sans-serif;
             background-color: #00000000;
             margin: 10px auto;
@@ -66,6 +66,17 @@
       </script>
   </head>
   <body>
+    <div>
+      <div *ngIf="user">
+        <h1>Welcome, {{ user.firstName }} {{ user.lastName }}!</h1>
+        <p>Email: {{ user.email }}</p>
+        <p>Phone Number: {{ user.phoneNumber }}</p>
+      </div>
+      <p>Hi</p>
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+        <p>Email: {{ user.email }}</p>
+        <p>Phone Number: {{ user.phoneNumber }}</p>
+    </div>
     <!-- Profile picture -->
     <img class="profile-picture" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="User Profile Picture">
 
