@@ -8,6 +8,8 @@ import (
 	"strings"
 	"time"
 
+	"errors"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"
@@ -54,6 +56,14 @@ type User struct {
 	LastName    string `gorm:"column:lastName"`
 	Email       string
 	Password    string
+}
+
+type ProfileResponse struct {
+	ID          uint   `json:"id"`
+	PhoneNumber uint   `json:"phone_number"`
+	FirstName   string `json:"first_name"`
+	LastName    string `json:"last_name"`
+	Email       string `json:"email"`
 }
 
 type ParkingSpot struct {
@@ -254,6 +264,88 @@ func main() {
 	})
 
 	r.Run()
+
+	r.GET("/profile", func(c *gin.Context) {
+		// Get the JWT token from the Authorization header
+		authHeader := c.GetHeader("Authorization")
+		if authHeader == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "missing Authorization header"})
+			return
+		}
+
+		// Parse the JWT token and get the email from it
+		token, err := jwt.ParseWithClaims(authHeader, &Claims{}, func(token *jwt.Token) (interface{}, error) {
+			return jwtKey, nil
+		})
+		if err != nil {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid JWT token"})
+			return
+		}
+		claims, ok := token.Claims.(*Claims)
+		if !ok || !token.Valid {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid JWT token"})
+			return
+		}
+
+		// Query the database for the user with the given email
+		var user User
+		db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to connect to database"})
+			return
+		}
+		result := db.Where("email = ?", claims.Email).First(&user)
+		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+			c.JSON(http.StatusNotFound, gin.H{"error": "user not found"})
+			return
+		} else if result.Error != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to query database"})
+			return
+		}
+
+		// Return the user's profile information
+		c.JSON(http.StatusOK, gin.H{
+			"id":          user.ID,
+			"phoneNumber": user.PhoneNumber,
+			"firstName":   user.FirstName,
+			"lastName":    user.LastName,
+			"email":       user.Email,
+		})
+	})
+
+}
+
+// Middleware function to authenticate the user's JWT token
+func authMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		tokenString := c.GetHeader("Authorization")
+		token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
+			return jwtKey, nil
+		})
+		if err != nil {
+			c.JSON(http.StatusUnauthorized, "")
+			c.Abort()
+		}
+		if !token.Valid {
+			c.JSON(http.StatusUnauthorized, "")
+			c.Abort()
+		}
+	}
+}
+
+// Function to extract the user's email from the JWT token
+func getEmailFromToken(tokenString string) (string, error) {
+	claims := &Claims{}
+	token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
+		return jwtKey, nil
+	})
+	if err != nil {
+		return "", err
+	}
+	if !token.Valid {
+		return "", errors.New("Invalid token")
+	}
+	return claims.Email, nil
 }
 
 func checkIfDataRecievedFromSellPage(spot Listing) {
