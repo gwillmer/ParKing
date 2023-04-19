@@ -10,7 +10,7 @@ import { BuyComponent } from './buy/buy.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JwtInterceptor } from './jwt.interceptor';
-import { AgmCoreModule } from '@agm/core';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,16 +19,14 @@ import { AgmCoreModule } from '@agm/core';
     LoginComponent,
     BuyComponent,
     SpecialEventsComponent,
-    ProfileComponent
+    ProfileComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCgJTXb6pE0-Us2v-Q4x-T-K5fOMNHiElg'
-    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
