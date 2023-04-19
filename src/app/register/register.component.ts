@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class RegisterComponent {
   showPWAlert: boolean = false
   constructor(
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ){
   }
   validateEmail(email: string | null): boolean{
@@ -56,6 +58,7 @@ export class RegisterComponent {
     }).subscribe((response: any) => {
       if(response){
         localStorage.setItem('token', response.jwt)
+        this.authService.loggedIn = true;
         this.router.navigate(['profile'])
       }
       this.registerFirstName = null

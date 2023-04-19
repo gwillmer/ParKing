@@ -421,11 +421,9 @@ func checkPostToDataBase() {
 
 /*func generateParkingsSpots() {
 	records, error := readData("data.csv")
-
 	if error != nil {
 		log.Fatal(error)
 	}
-
 	for _, record := range records {
 		spot := ParkingSpot{
 			User: User{
@@ -487,14 +485,11 @@ func printAddress(spot ParkingSpot) {
 
 /*func printAvailability(spot ParkingSpot) {
 	intVar, err := strconv.Atoi(spot.Availibily)
-
 	if err != nil {
 		fmt.Println("Error during conversion.")
 		return
 	}
-
 	fmt.Println("Availability:")
-
 	if intVar == 0 {
 		fmt.Println("This parking spot is not available.")
 	} else if intVar == 1 {
