@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Bar and Google Maps</title>
+	<style>
+		.search {
+            display: flex;
+			align-items: center;
+			justify-content: center;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+		}
+
+		.search input[type="text"] {
+			flex: 1;
+			height: 30px;
+			padding: 15px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+		}
+
+		.search button {
+            background-color: #f2c2d4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+		}
+
+		.search button:hover, .tab:hover {
+			background-color: #f2c2d4;
+			color: #ccc;
+		}
+
+		.map-container {
+			margin: 20px;
+			border: 20px solid #ffffff;
+			height: calc(100vh - 290px);
+			border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+		}
+
+		.map {
+			height: 100%;
+			border-radius: 10px;
+		}
+
+		.advert {
+			margin: 20px;
+			background-color: rgb(255, 255, 255);
+			width: calc(100% - 40px);
+			padding: 30px;
+			border-radius: 10px;
+			box-sizing: border-box;
+			position: relative;
+		}
+		.space {
+			height: 10px;
+		}
+		.image {
+			float: left;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+		.description {
+			font-size: smaller;
+		}
+		.button {
+			position: absolute;
+			top: 30px;
+			right: 30px;
+			padding: 10px;
+			background-color: #f2c2d4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+		}
+		.contact-link {
+			display: block;
+			text-align: right;
+			margin-top: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="search">
+		<input type="text" placeholder=" Search...">
+		<button>
+            Search
+        </button>
+        <style>
+            body {
+                    background: rgba(255, 255, 255, 0.45);
+              border-radius: 25px;
+                }
+          </style>
+	</div>
+
+	<div class="map-container">
+		<agm-map [latitude]="lat1" [longitude]="lng1">
+			<agm-marker [latitude]="lat1" [longitude]="lng1">	
+				<agm-info-window [disableAutoPan]="true">
+					<p>U.S. Compact - 8ft x 16ft </p>
+					<p>1232 SW Third Ave, Gainesville, FL, 32601</p>
+					<img src="https://i.redd.it/odv7ox5brwez.jpg" width="100" height="100">
+				</agm-info-window>	
+			</agm-marker>
+
+			<agm-marker [latitude]="lat2" [longitude]="lng2">
+				<agm-info-window [disableAutoPan]="true">
+					<p>Small Trucker - 15ft x 30ft</p>
+					<p>9315 SW 83rd Street, Miami, FL, 33173</p>
+					<img src="https://www.casakleenpressurewash.com/uplift-data/images/services/driveway-washing.webp" width="100" height="100">
+				</agm-info-window>	
+			</agm-marker>
+
+			<agm-marker [latitude]="lat3" [longitude]="lng3">
+				<agm-info-window [disableAutoPan]="true">
+					<p>Large RV and Boat - 12ft x 40ft</p>
+					<p>550 Paloma Drive, Coral Gables, FL, 33143</p>
+					<img src="https://www.northsidesun.com/sites/default/files/boat.jpg" width="100" height="100">
+				</agm-info-window>	
+			</agm-marker>
+		</agm-map>
+	</div>
+
+	<div class="advert">
+		<div class="image">
+			<img src="https://i.redd.it/odv7ox5brwez.jpg" width="100" height="100">
+		</div>
+		<div class="details">
+			<p>Description: U.S. Compact - 8ft x 16ft </p>
+			<p>Location: 1232 SW Third Ave, Gainesville, FL, 32601</p>
+		</div>
+		<button class="button">BOOK IT</button>
+		<a class="contact-link" href="seller-info1.html">Contact seller</a>
+	</div>
+
+	<div class="advert">
+		<div class="image">
+			<img src="https://www.casakleenpressurewash.com/uplift-data/images/services/driveway-washing.webp" width="100" height="100">
+		</div>
+		<div class="details">
+			<p>Description: Small Trucker - 15ft x 30ft</p>
+			<p>Location: 9315 SW 83rd Street, Miami, FL, 33173</p>
+		</div>
+		<button class="button">BOOK IT</button>
+		<a class="contact-link" href="seller-info1.html">Contact seller</a>
+	</div>
+
+	<div class="advert">
+		<div class="image">
+			<img src="https://www.northsidesun.com/sites/default/files/boat.jpg" width="100" height="100">
+		</div>
+		<div class="details">
+			<p>Description: Large RV and Boat - 12ft x 40ft</p>
+			<p>Location: 550 Paloma Drive, Coral Gables, FL, 33143</p>
+		</div>
+		<button class="button">BOOK IT</button>
+		<a class="contact-link" href="seller-info1.html">Contact seller</a>
+	</div>
+
+	<div class="space"></div>
+
+</body>
+</html>
