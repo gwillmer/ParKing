@@ -26,7 +26,10 @@
         border-radius: 35px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
         }
+        input[type="drop"]
         input[type="text"],
+        input[type="size"],
+        input[type="text2"],
         input[type="password"] {
         width: 100%;
         padding: 10px;
@@ -53,7 +56,8 @@
         border: 1px solid #ccc;
         border-radius: 25px;
         }
-        input[type="date"] {
+        input[type="sdate"],
+        input[type="edate"] {
         width: 100%;
         padding: 10px;
         margin-bottom: 1rem;
@@ -93,7 +97,7 @@
       <input [(ngModel)]="listingZipCode" type="number" placeholder=""/>
 
       <label for="state">Select state:</label>
-        <select [(ngModel)]="listingState">
+        <select [(ngModel)]="listingState" type="drop">
           <option value="AL">AL</option>
           <option value="AK">AK</option>
           <option value="AZ">AZ</option>
@@ -148,7 +152,7 @@
         </select>
 
         <label for="ParkingSize">Size of Parking Spot Avaliable:</label>
-        <select [(ngModel)]="listingSize">
+        <select [(ngModel)]="listingSize" type = "size">
           <option value="compact">U.S. Compact - 8ft x 16ft</option>
           <option value="standard">U.S. Standard - 8.6ft x 18ft</option>
           <option value="large">U.S. Large - 9ft x 20ft</option>
@@ -160,13 +164,13 @@
         </select>
 
         <label>Start Date:</label>
-        <input [(ngModel)]="listingStartDate" type="date" placeholder=""/>
+        <input [(ngModel)]="listingStartDate" type="sdate" placeholder=""/>
 
         <label>End Date:</label>
-        <input [(ngModel)]="listingEndDate" type="date" placeholder=""/>
+        <input [(ngModel)]="listingEndDate" type="edate" placeholder=""/>
         
         <label for="description">Description:</label>
-        <input [(ngModel)]="listingDescription" type="text" placeholder=""/>
+        <input [(ngModel)]="listingDescription" type="text2" placeholder=""/>
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <label for="image">Select an Image:</label>
             <p> </p>

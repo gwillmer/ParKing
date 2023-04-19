@@ -5,6 +5,12 @@ describe('Navigates between tabs', () => {
       cy.get('.navbar-brand > img').should('exist')
   });
 
+  it('Clicks on Logo', () => {
+    cy.visit('/events')
+    cy.get('.navbar-brand > img').click()
+    cy.url().should('include', 'home') 
+  });
+
   it('Clicks on Buy', () => {
     cy.visit('/login')
     cy.contains('Buy').click()

@@ -33,7 +33,7 @@ export class SpecialEventsComponent {
     }).subscribe((response: any) => {
       if(response){
         localStorage.setItem('token', response.jwt)
-        this.router.navigate(['profile'])
+        this.router.navigate(['buy'])
       }
       this.listingAddress = null
       this.listingZipCode = null

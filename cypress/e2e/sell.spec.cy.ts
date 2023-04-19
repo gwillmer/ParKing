@@ -4,14 +4,14 @@ describe('Create Listing Page Tests', () => {
       cy.visit('/special-events')
     });
   
-    it('Submits the form successfully', () => {
-        cy.get('input[id="address"]').type('123 Main St.')
-        cy.get('input[id="zipcode"]').type('12345')
-        cy.get('select[id="state"]').select('FL')
-        cy.get('select[id="ParkingSize"]').select('U.S. Standard - 8.6ft x 18ft')
-        cy.get('input[id="sdate"]').type('2023-04-01')
-        cy.get('input[id="edate"]').type('2023-04-07')
-        cy.get('input[id="description"]').type('Test Description')
-        cy.get('input[type="submit"]').click()
-      });
+    it('should allow a user to fill out and submit the form', () => {
+      cy.get('input[type="text"]').type('123 Main St');
+      cy.get('input[type="number"]').type('12345');
+      cy.get('[type="drop"]').select('CA');
+      cy.get('[type="size"]').select('Large Trucker - 15ft x 40ft');
+      cy.get('label').contains('Start Date:').next().type('2023-05-01');
+      cy.get('label').contains('End Date:').next().type('2023-05-31');
+      cy.get('input[type="text2"]').type('This is a test listing.');
+      cy.get('button[type="submit"]').click();
+    });
   })
