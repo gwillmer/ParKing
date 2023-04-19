@@ -1,15 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Search Bar and Google Maps</title>
 	<style>
-		body {
-            font-family: Arial, sans-serif;
-            background-color: #00000000;
-            margin: 10px auto;
-            width: 1200px;
-        }
 		.search {
             display: flex;
 			align-items: center;
@@ -60,12 +53,16 @@
 		}
 
 		.advert {
-			background-color: rgba(255, 255, 255, 0);
-			width: calc(100% - 30px);
-			padding: 10px;
+			margin: 20px;
+			background-color: rgb(255, 255, 255);
+			width: calc(100% - 40px);
+			padding: 30px;
+			border-radius: 10px;
 			box-sizing: border-box;
-			margin-bottom: 20px;
 			position: relative;
+		}
+		.space {
+			height: 10px;
 		}
 		.image {
 			float: left;
@@ -77,8 +74,8 @@
 		}
 		.button {
 			position: absolute;
-			top: 10px;
-			right: 10px;
+			top: 30px;
+			right: 30px;
 			padding: 10px;
 			background-color: #f2c2d4;
             color: white;
@@ -104,97 +101,77 @@
         </button>
         <style>
             body {
-				background: rgb(255, 255, 255);
-				border-radius: 25px;
+                    background: rgba(255, 255, 255, 0.45);
+              border-radius: 25px;
                 }
           </style>
 	</div>
 
 	<div class="map-container">
-		<div id="map" class="map"></div>
+		<agm-map [latitude]="lat1" [longitude]="lng1">
+			<agm-marker [latitude]="lat1" [longitude]="lng1">	
+				<agm-info-window [disableAutoPan]="true">
+					<p>U.S. Compact - 8ft x 16ft </p>
+					<p>1232 SW Third Ave, Gainesville, FL, 32601</p>
+					<img src="https://i.redd.it/odv7ox5brwez.jpg" width="100" height="100">
+				</agm-info-window>	
+			</agm-marker>
+
+			<agm-marker [latitude]="lat2" [longitude]="lng2">
+				<agm-info-window [disableAutoPan]="true">
+					<p>Small Trucker - 15ft x 30ft</p>
+					<p>9315 SW 83rd Street, Miami, FL, 33173</p>
+					<img src="https://www.casakleenpressurewash.com/uplift-data/images/services/driveway-washing.webp" width="100" height="100">
+				</agm-info-window>	
+			</agm-marker>
+
+			<agm-marker [latitude]="lat3" [longitude]="lng3">
+				<agm-info-window [disableAutoPan]="true">
+					<p>Large RV and Boat - 12ft x 40ft</p>
+					<p>550 Paloma Drive, Coral Gables, FL, 33143</p>
+					<img src="https://www.northsidesun.com/sites/default/files/boat.jpg" width="100" height="100">
+				</agm-info-window>	
+			</agm-marker>
+		</agm-map>
 	</div>
 
-	<script src="https://www.google.com/maps/search/?api=1"></script>
-	<script>
-		function initMap() {
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 10,
-				center: {lat: 40.730610, lng: -73.935242},
-				styles: [{
-					featureType: 'poi',
-					stylers: [{ visibility: 'off' }]
-				}]
-			});
-		}
-        
-
-		google.maps.event.addDomListener(window, 'load', initMap);
-	</script>
-
-
-
-	<style>
-		.map-container {
-			margin: 20px;
-			border: 20px solid #ffffff;
-			height: calc(100vh - 310px);
-			border-radius: 25px;
-		}
-
-		.map {
-			height: 100%;
-			border-radius: 10px;
-		}
-
-		.search {
-			margin-top: 10px;
-		}
-	</style>
 	<div class="advert">
 		<div class="image">
-			<img src="image1.jpg" width="100" height="100">
+			<img src="https://i.redd.it/odv7ox5brwez.jpg" width="100" height="100">
 		</div>
 		<div class="details">
-			<p>Physical description: [insert description here]</p>
-			<p>Location: [insert location here]</p>
-		</div>
-		<button class="button">BOOK IT</button>
-		<a class="contact-link" href="seller-info1.html">Contact seller</a>
-	</div>
-	<div class="advert">
-		<div class="image">
-			<img src="image1.jpg" width="100" height="100">
-		</div>
-		<div class="details">
-			<p>Physical description: [insert description here]</p>
-			<p>Location: [insert location here]</p>
-		</div>
-		<button class="button">BOOK IT</button>
-		<a class="contact-link" href="seller-info1.html">Contact seller</a>
-	</div>
-	<div class="advert">
-		<div class="image">
-			<img src="image1.jpg" width="100" height="100">
-		</div>
-		<div class="details">
-			<p>Physical description: [insert description here]</p>
-			<p>Location: [insert location here]</p>
-		</div>
-		<button class="button">BOOK IT</button>
-		<a class="contact-link" href="seller-info1.html">Contact seller</a>
-	</div>
-	<div class="advert">
-		<div class="image">
-			<img src="image1.jpg" width="100" height="100">
-		</div>
-		<div class="details">
-			<p>Physical description: [insert description here]</p>
-			<p>Location: [insert location here]</p>
+			<p>Description: U.S. Compact - 8ft x 16ft </p>
+			<p>Location: 1232 SW Third Ave, Gainesville, FL, 32601</p>
 		</div>
 		<button class="button">BOOK IT</button>
 		<a class="contact-link" href="seller-info1.html">Contact seller</a>
 	</div>
 
+	<div class="advert">
+		<div class="image">
+			<img src="https://www.casakleenpressurewash.com/uplift-data/images/services/driveway-washing.webp" width="100" height="100">
+		</div>
+		<div class="details">
+			<p>Description: Small Trucker - 15ft x 30ft</p>
+			<p>Location: 9315 SW 83rd Street, Miami, FL, 33173</p>
+		</div>
+		<button class="button">BOOK IT</button>
+		<a class="contact-link" href="seller-info1.html">Contact seller</a>
+	</div>
+
+	<div class="advert">
+		<div class="image">
+			<img src="https://www.northsidesun.com/sites/default/files/boat.jpg" width="100" height="100">
+		</div>
+		<div class="details">
+			<p>Description: Large RV and Boat - 12ft x 40ft</p>
+			<p>Location: 550 Paloma Drive, Coral Gables, FL, 33143</p>
+		</div>
+		<button class="button">BOOK IT</button>
+		<a class="contact-link" href="seller-info1.html">Contact seller</a>
+	</div>
+
+	<div class="space"></div>
 
 </body>
 </html>
