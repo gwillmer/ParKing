@@ -48,40 +48,40 @@ Youtube Link: https://youtu.be/SOT3uScskcA
 #### Rodrigo Avila Merchan
 
 ### New and Updated features:
-1. Implemented database with mySQL
-2. Implemented user table for data gathering and data population from website
-3. Implemented frontend and backend communication functionality, frontend and backend now talk to each other (GET,POST)
+2. Implemented parking spot table for data gathering and data population from website
+3. Implemented frontend and backend communication functionality, frontend and backend now talk to each other on every page excpt the home page
 
-### Created Register and Login Structures:
-1. Implemented register and login structures in go. The goal of these structures is to creat insatnces of them and populate there respective fields based on the data gathered from the register and login endpages.  
+### Created Listing and Parking Spot Structures:
+1. Implemented listing and parking spot structures in go. The goal of these structures is to create instances of them and populate there respective fields based on the data gathered from the sell endpage.
 2. Populated the structures variables with data acquired from the website
-3. Implemented HTTP post to user database table for the register page
-4. Implemented checking database table for an already registered user for login page purposes
+3. Implemented HTTP post to parking spot database table for the sell page
+4. Implemented checking database table in order for that data to be displayed on the buy page after a listing is created.
 
-### Register and Login Unit Testing
-- Register Data Test
-  -  Checks if register object is populated with user input data from register endpage. Displays data if successful, else throws a not recieved error.
-- Login Data Test
-  - Checks if login object is populated with user input data from login endpage. Displays data if successful, else throws a not recieved error.
+### Sell Unit Testing
+- Sell Listing Data Test
+  -  Checks if listing object is populated with parking spot input data from sell endpage. Displays data if successful, else throws a not recieved error.
 - Post Data Test
-  - Checks if the user registration data was posted onto the user database table. Displays success message if no errors occur.
+  - Checks if the parking spot listing data was posted onto the parking spot database table. Displays success message if no errors occur.
 
 ### Backend API
 - Classes and interface
   - Claims struct 
   - Register struct
   - Login struct
+  - Listing struct
   - User struct
   - ParkingSpot struct
   - Tabler interface
 - Functions
   - func (User) TableName()
+  - func (ParkingSpot) TableName()
   - func HashPassword()
   - func CheckPasswordHash()
   - func auth()
   - func main()
   - func checkIfDataRecievedFromRegisterPage()
   - func checkIfDataRecievedFromLoginPage()
+  - func checkIfDataRecievedFromSellPage()
   - func checkPostToDataBase()
   - func generateParkingsSpots()
   - func testSpot()
