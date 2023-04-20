@@ -48,11 +48,11 @@ Youtube Link: https://youtu.be/SOT3uScskcA
 #### Rodrigo Avila Merchan
 
 ### New and Updated features:
-2. Implemented parking spot table for data gathering and data population from website
-3. Implemented frontend and backend communication functionality, frontend and backend now talk to each other on every page excpt the home page
+1. Implemented parking spot table for data gathering and data population from website
+2. Implemented frontend and backend communication functionality, frontend and backend now talk to each other on every page except the home page
 
 ### Created Listing and Parking Spot Structures:
-1. Implemented listing and parking spot structures in go. The goal of these structures is to create instances of them and populate there respective fields based on the data gathered from the sell endpage.
+1. Implemented listing and parking spot structures in Go. The goal of these structures is to create instances of them and populate there respective fields based on the data gathered from the sell endpage.
 2. Populated the structures variables with data acquired from the website
 3. Implemented HTTP post to parking spot database table for the sell page
 4. Implemented checking database table in order for that data to be displayed on the buy page after a listing is created.
